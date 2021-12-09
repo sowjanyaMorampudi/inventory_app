@@ -1,18 +1,28 @@
 import { useState } from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
-const Additem = ({ items, setItems, buttonClick }) => {
-  const [additem, setAdditem] = useState({ product_name: "", quantity: "" });
+
+const Update = ({ items, setItems, buttonClick }) => {
+  const [updateitem, setUpdateitem] = useState({
+    product_name: "",
+    quantity: "",
+  });
   const [modelclose, setModelclose] = useState(true);
   const changeHandler = (e) => {
-    setAdditem({ ...additem, [e.target.name]: e.target.value });
+    setUpdateitem({ ...updateitem, [e.target.name]: e.target.value });
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    setItems([...items, additem]);
+
+    items.map((item, index) => {
+      if (item.index === index) {
+        setUpdateitem({ ...items, updateitem });
+      }
+    });
+    setItems([updateitem]);
+
     setModelclose(false);
     buttonClick();
   };
-
   return (
     <div>
       <Modal isOpen={modelclose} size="lg">
@@ -42,4 +52,4 @@ const Additem = ({ items, setItems, buttonClick }) => {
   );
 };
 
-export default Additem;
+export default Update;

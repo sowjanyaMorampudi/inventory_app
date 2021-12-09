@@ -14,18 +14,23 @@ function App() {
     setNewitem(!newitem);
   };
   const deletehandler = (indexValue) => {
-    const newItems = items.filter((item, index) => index != indexValue);
+    const newItems = items.filter((item, index) => index !== indexValue);
     setItems(newItems);
   };
 
   return (
     <center>
-      <h1>Electronics</h1>
-      <button onClick={buttonClick}>AddItem</button>
+      <h1>Inventory app for electronics</h1>
+      <button
+        onClick={buttonClick}
+        style={{ backgroundColor: "green", color: "white" }}
+      >
+        AddItem
+      </button>
       {newitem && (
         <Additem items={items} setItems={setItems} buttonClick={buttonClick} />
       )}
-      <Items items={items} deletehandler={deletehandler} />
+      <Items items={items} setItems={setItems} deletehandler={deletehandler} />
     </center>
   );
 }
