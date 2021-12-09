@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Card, CardBody, CardGroup, CardTitle, Col, Button } from "reactstrap";
 import Update from "./update_model";
-const Items = ({ items, setItems, deletehandler, updatehandler }) => {
+const Items = ({ items, setItems, deletehandler }) => {
   const [newitem, setNewitem] = useState(false);
-  const buttonClick = () => {
+  const [editItem, setEditItem] = useState();
+  const buttonClick = (item) => {
     setNewitem(!newitem);
+    setEditItem(item);
   };
   return (
     <>
@@ -24,12 +26,19 @@ const Items = ({ items, setItems, deletehandler, updatehandler }) => {
                         Delete
                       </button>
                       <br />
-                      <button onClick={buttonClick}>update</button>
+                      <button
+                        onClick={() => {
+                          buttonClick(item);
+                        }}
+                      >
+                        update
+                      </button>
                       {newitem && (
                         <Update
                           items={items}
                           setItems={setItems}
                           buttonClick={buttonClick}
+                          editItem={editItem}
                         />
                       )}
                     </CardBody>

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Modal, ModalHeader, ModalBody } from "reactstrap";
 
-const Update = ({ items, setItems, buttonClick }) => {
+const Update = ({ items, setItems, buttonClick, editItem }) => {
   const [updateitem, setUpdateitem] = useState({
     product_name: "",
     quantity: "",
@@ -13,12 +13,16 @@ const Update = ({ items, setItems, buttonClick }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    items.map((item, index) => {
-      if (item.index === index) {
-        setUpdateitem({ ...items, updateitem });
+    const finaldata = items.map((item, index) => {
+      if (item.product_name === editItem.product_name) {
+        const updatedvalue = { ...item, ...updateitem };
+        return updatedvalue;
+      } else {
+        return item;
       }
     });
-    setItems([updateitem]);
+    console.log("final data::", finaldata);
+    setItems(finaldata);
 
     setModelclose(false);
     buttonClick();
