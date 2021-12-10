@@ -6,6 +6,7 @@ const Update = ({ items, setItems, buttonClick, editItem }) => {
     product_name: "",
     quantity: "",
   });
+  //   console.log(updateitem);
   const [modelclose, setModelclose] = useState(true);
   const changeHandler = (e) => {
     setUpdateitem({ ...updateitem, [e.target.name]: e.target.value });
@@ -21,7 +22,7 @@ const Update = ({ items, setItems, buttonClick, editItem }) => {
         return item;
       }
     });
-    console.log("final data::", finaldata);
+    // console.log("final data::", finaldata);
     setItems(finaldata);
 
     setModelclose(false);
