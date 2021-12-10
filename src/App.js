@@ -26,9 +26,7 @@ function App() {
       <Button onClick={buttonClick} color="success">
         AddItem
       </Button>
-      {newitem && (
-        <Additem items={items} setItems={setItems} buttonClick={buttonClick} />
-      )}
+      {newitem && <Additem items={items} buttonClick={buttonClick} />}
       <Items items={items} setItems={setItems} deletehandler={deletehandler} />
     </center>
   );

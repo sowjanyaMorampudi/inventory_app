@@ -64,7 +64,6 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
               />
             </FormGroup>
             <Button>save</Button>
-            {/* <input type="submit" value="save" /> */}
           </Form>
         </ModalBody>
       </Modal>

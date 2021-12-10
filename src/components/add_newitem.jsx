@@ -9,7 +9,7 @@ import {
   Input,
   Button,
 } from "reactstrap";
-const Additem = ({ items, setItems, buttonClick }) => {
+const Additem = ({ items, buttonClick }) => {
   const [additem, setAdditem] = useState({ product_name: "", quantity: "" });
   const [modelclose, setModelclose] = useState(true);
   const changeHandler = (e) => {
@@ -17,7 +17,8 @@ const Additem = ({ items, setItems, buttonClick }) => {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    setItems([...items, additem]);
+    items.push(additem);
+
     setModelclose(false);
     buttonClick();
   };
