@@ -37,10 +37,14 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
     setModelclose(false);
     updatehandler();
   };
+  const closeform = () => {
+    setModelclose(false);
+    updatehandler();
+  };
   return (
     <div>
       <Modal isOpen={modelclose} size="lg">
-        <ModalHeader></ModalHeader>
+        <ModalHeader toggle={closeform}></ModalHeader>
         <ModalBody>
           <Form onSubmit={submitHandler}>
             <FormGroup>
