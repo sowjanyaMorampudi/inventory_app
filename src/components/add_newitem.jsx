@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from "reactstrap";
 const Additem = ({ items, setItems, buttonClick }) => {
   const [additem, setAdditem] = useState({ product_name: "", quantity: "" });
   const [modelclose, setModelclose] = useState(true);
@@ -12,30 +21,39 @@ const Additem = ({ items, setItems, buttonClick }) => {
     setModelclose(false);
     buttonClick();
   };
+  const closeform = () => {
+    setModelclose(false);
+    buttonClick();
+  };
 
   return (
     <div>
       <Modal isOpen={modelclose} size="lg">
-        <ModalHeader></ModalHeader>
+        <ModalHeader toggle={closeform}></ModalHeader>
         <ModalBody>
-          <form onSubmit={submitHandler}>
-            <input
-              type="text"
-              placeholder="product_name"
-              name="product_name"
-              onChange={changeHandler}
-            />
-            <br />
-            <input
-              type="text"
-              placeholder="quantity"
-              name="quantity"
-              onChange={changeHandler}
-            />
-            <br />
-
-            <input type="submit" value="save" />
-          </form>
+          <Form onSubmit={submitHandler}>
+            <FormGroup>
+              <Label for="productName">product_name</Label>
+              <Input
+                type="text"
+                placeholder="product_name"
+                name="product_name"
+                onChange={changeHandler}
+                id="productName"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="quantity">quantity</Label>
+              <Input
+                type="text"
+                placeholder="quantity"
+                name="quantity"
+                onChange={changeHandler}
+                id="quantity"
+              />
+            </FormGroup>
+            <Button>save</Button>
+          </Form>
         </ModalBody>
       </Modal>
     </div>

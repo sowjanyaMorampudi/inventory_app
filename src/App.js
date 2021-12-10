@@ -2,12 +2,14 @@ import { useState } from "react";
 import Items from "./components/items";
 import Additem from "./components/add_newitem";
 import "./App.css";
+import { Button } from "reactstrap";
 
 function App() {
   const [items, setItems] = useState([
     { product_name: "mac pro", quantity: 22 },
     { product_name: "one plus", quantity: 2 },
     { product_name: "hp laptop", quantity: 30 },
+    { product_name: "lenovo laptop", quantity: 40 },
   ]);
   const [newitem, setNewitem] = useState(false);
   const buttonClick = () => {
@@ -21,12 +23,9 @@ function App() {
   return (
     <center>
       <h1>Inventory app for electronics</h1>
-      <button
-        onClick={buttonClick}
-        style={{ backgroundColor: "green", color: "white" }}
-      >
+      <Button onClick={buttonClick} color="success">
         AddItem
-      </button>
+      </Button>
       {newitem && (
         <Additem items={items} setItems={setItems} buttonClick={buttonClick} />
       )}

@@ -1,7 +1,16 @@
 import { useState } from "react";
-import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+} from "reactstrap";
 
-const Update = ({ items, setItems, buttonClick, editItem }) => {
+const Update = ({ items, setItems, updatehandler, editItem }) => {
   const [updateitem, setUpdateitem] = useState({
     product_name: "",
     quantity: "",
@@ -26,31 +35,37 @@ const Update = ({ items, setItems, buttonClick, editItem }) => {
     setItems(finaldata);
 
     setModelclose(false);
-    buttonClick();
+    updatehandler();
   };
   return (
     <div>
       <Modal isOpen={modelclose} size="lg">
         <ModalHeader></ModalHeader>
         <ModalBody>
-          <form onSubmit={submitHandler}>
-            <input
-              type="text"
-              placeholder="product_name"
-              name="product_name"
-              onChange={changeHandler}
-            />
-            <br />
-            <input
-              type="text"
-              placeholder="quantity"
-              name="quantity"
-              onChange={changeHandler}
-            />
-            <br />
-
-            <input type="submit" value="save" />
-          </form>
+          <Form onSubmit={submitHandler}>
+            <FormGroup>
+              <Label for="productName">product_name</Label>
+              <Input
+                type="text"
+                placeholder="product_name"
+                name="product_name"
+                onChange={changeHandler}
+                id="productName"
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="quantity">quantity</Label>
+              <Input
+                type="text"
+                placeholder="quantity"
+                name="quantity"
+                onChange={changeHandler}
+                id="quantity"
+              />
+            </FormGroup>
+            <Button>save</Button>
+            {/* <input type="submit" value="save" /> */}
+          </Form>
         </ModalBody>
       </Modal>
     </div>

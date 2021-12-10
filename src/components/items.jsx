@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Card, CardBody, CardGroup, CardTitle, Col } from "reactstrap";
+import { Button, Card, CardBody, CardGroup, CardTitle, Col } from "reactstrap";
 import Update from "./update_model";
 const Items = ({ items, setItems, deletehandler }) => {
   const [newitem, setNewitem] = useState(false);
   const [editItem, setEditItem] = useState();
-  const buttonClick = (item) => {
+  const updatehandler = (item) => {
     setNewitem(!newitem);
     setEditItem(item);
   };
@@ -12,40 +12,44 @@ const Items = ({ items, setItems, deletehandler }) => {
     <CardGroup>
       {items.map((item, index) => {
         return (
-          <div key={index}>
-            <Col md="12">
-              <Card className="m-2">
+          <Col md="3">
+            <div key={index}>
+              <Card className="m-2 p-2" color="light">
                 <CardTitle>
                   <p>product_name:{item.product_name}</p>
                   <p>quantity:{item.quantity}</p>
                   <CardBody>
-                    <button
-                      onClick={() => deletehandler(index)}
+                    <Button
+                      color="danger"
+                      onClick={() => {
+                        deletehandler(index);
+                      }}
                       className="mb-2"
                     >
                       Delete
-                    </button>
+                    </Button>
                     <br />
-                    <button
+                    <Button
+                      color="primary"
                       onClick={() => {
-                        buttonClick(item);
+                        updatehandler(item);
                       }}
                     >
                       update
-                    </button>
+                    </Button>
                     {newitem && (
                       <Update
                         items={items}
                         setItems={setItems}
-                        buttonClick={buttonClick}
+                        updatehandler={updatehandler}
                         editItem={editItem}
                       />
                     )}
                   </CardBody>
                 </CardTitle>
               </Card>
-            </Col>
-          </div>
+            </div>
+          </Col>
         );
       })}
     </CardGroup>
