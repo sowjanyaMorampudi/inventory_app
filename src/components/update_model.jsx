@@ -12,8 +12,8 @@ import {
 
 const Update = ({ items, setItems, updatehandler, editItem }) => {
   const [updateitem, setUpdateitem] = useState({
-    product_name: "",
-    quantity: "",
+    product_name: editItem.product_name,
+    quantity: editItem.quantity,
   });
   //   console.log(updateitem);
   const [modelclose, setModelclose] = useState(true);
@@ -53,6 +53,7 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
                 type="text"
                 placeholder="product_name"
                 name="product_name"
+                value={updateitem.product_name}
                 onChange={changeHandler}
                 id="productName"
               />
@@ -64,6 +65,7 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
                 placeholder="quantity"
                 name="quantity"
                 onChange={changeHandler}
+                value={updateitem.quantity}
                 id="quantity"
               />
             </FormGroup>
