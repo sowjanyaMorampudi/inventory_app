@@ -10,41 +10,41 @@ import {
   Button,
 } from "reactstrap";
 
-const Update = ({ items, setItems, updatehandler, editItem }) => {
-  const [updateitem, setUpdateitem] = useState({
+const Update = ({ items, setItems, updateHandler, editItem }) => {
+  const [updateItem, setUpdateItem] = useState({
     product_name: editItem.product_name,
     quantity: editItem.quantity,
   });
-  //   console.log(updateitem);
-  const [modelclose, setModelclose] = useState(true);
+  //   console.log(updateItem);
+  const [modelClose, setModelClose] = useState(true);
   const changeHandler = (e) => {
-    setUpdateitem({ ...updateitem, [e.target.name]: e.target.value });
+    setUpdateItem({ ...updateItem, [e.target.name]: e.target.value });
   };
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const finaldata = items.map((item, index) => {
+    const finalData = items.map((item, index) => {
       if (item.product_name === editItem.product_name) {
-        const updatedvalue = { ...item, ...updateitem };
-        return updatedvalue;
+        const updatedValue = { ...item, ...updateItem };
+        return updatedValue;
       } else {
         return item;
       }
     });
-    // console.log("final data::", finaldata);
-    setItems(finaldata);
+    // console.log("final data::", finalData);
+    setItems(finalData);
 
-    setModelclose(false);
-    updatehandler();
+    setModelClose(false);
+    updateHandler();
   };
-  const closeform = () => {
-    setModelclose(false);
-    updatehandler();
+  const closeForm = () => {
+    setModelClose(false);
+    updateHandler();
   };
   return (
     <div>
-      <Modal isOpen={modelclose} size="lg">
-        <ModalHeader toggle={closeform}></ModalHeader>
+      <Modal isOpen={modelClose} size="lg">
+        <ModalHeader toggle={closeForm}></ModalHeader>
         <ModalBody>
           <Form onSubmit={submitHandler}>
             <FormGroup>
@@ -52,7 +52,7 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
               <Input
                 type="text"
                 name="product_name"
-                value={updateitem.product_name}
+                value={updateItem.product_name}
                 onChange={changeHandler}
                 id="productName"
               />
@@ -63,7 +63,7 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
                 type="text"
                 name="quantity"
                 onChange={changeHandler}
-                value={updateitem.quantity}
+                value={updateItem.quantity}
                 id="quantity"
               />
             </FormGroup>

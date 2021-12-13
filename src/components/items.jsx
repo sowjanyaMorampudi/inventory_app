@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Button, Card, CardBody, CardGroup, CardTitle, Col } from "reactstrap";
 import Update from "./update_model";
-const Items = ({ items, setItems, deletehandler }) => {
-  const [newitem, setNewitem] = useState(false);
+const Items = ({ items, setItems, deleteHandler }) => {
+  const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState();
-  const updatehandler = (item) => {
-    setNewitem(!newitem);
+  const updateHandler = (item) => {
+    setNewItem(!newItem);
     setEditItem(item);
   };
   return (
@@ -22,7 +22,7 @@ const Items = ({ items, setItems, deletehandler }) => {
                     <Button
                       color="danger"
                       onClick={() => {
-                        deletehandler(index);
+                        deleteHandler(index);
                       }}
                       className="mb-2"
                     >
@@ -32,16 +32,16 @@ const Items = ({ items, setItems, deletehandler }) => {
                     <Button
                       color="primary"
                       onClick={() => {
-                        updatehandler(item);
+                        updateHandler(item);
                       }}
                     >
                       update
                     </Button>
-                    {newitem && (
+                    {newItem && (
                       <Update
                         items={items}
                         setItems={setItems}
-                        updatehandler={updatehandler}
+                        updateHandler={updateHandler}
                         editItem={editItem}
                       />
                     )}

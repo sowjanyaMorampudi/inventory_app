@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Items from "./components/items";
-import Additem from "./components/add_newitem";
+import AddItem from "./components/add_new_item";
 import "./App.css";
 import { Button } from "reactstrap";
 
@@ -11,11 +11,11 @@ function App() {
     { product_name: "hp laptop", quantity: 30 },
     { product_name: "lenovo laptop", quantity: 40 },
   ]);
-  const [newitem, setNewitem] = useState(false);
+  const [newItem, setNewItem] = useState(false);
   const buttonClick = () => {
-    setNewitem(!newitem);
+    setNewItem(!newItem);
   };
-  const deletehandler = (indexValue) => {
+  const deleteHandler = (indexValue) => {
     const newItems = items.filter((item, index) => index !== indexValue);
     setItems(newItems);
   };
@@ -26,8 +26,8 @@ function App() {
       <Button onClick={buttonClick} color="success">
         AddItem
       </Button>
-      {newitem && <Additem items={items} buttonClick={buttonClick} />}
-      <Items items={items} setItems={setItems} deletehandler={deletehandler} />
+      {newItem && <AddItem items={items} buttonClick={buttonClick} />}
+      <Items items={items} setItems={setItems} deleteHandler={deleteHandler} />
     </center>
   );
 }

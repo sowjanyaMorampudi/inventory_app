@@ -9,28 +9,28 @@ import {
   Input,
   Button,
 } from "reactstrap";
-const Additem = ({ items, buttonClick }) => {
-  const [additem, setAdditem] = useState({ product_name: "", quantity: "" });
-  const [modelclose, setModelclose] = useState(true);
+const AddItem = ({ items, buttonClick }) => {
+  const [addItem, setAddItem] = useState({ product_name: "", quantity: "" });
+  const [modelClose, setModelClose] = useState(true);
   const changeHandler = (e) => {
-    setAdditem({ ...additem, [e.target.name]: e.target.value });
+    setAddItem({ ...addItem, [e.target.name]: e.target.value });
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    items.push(additem);
+    items.push(addItem);
 
-    setModelclose(false);
+    setModelClose(false);
     buttonClick();
   };
-  const closeform = () => {
-    setModelclose(false);
+  const closeForm = () => {
+    setModelClose(false);
     buttonClick();
   };
 
   return (
     <div>
-      <Modal isOpen={modelclose} size="lg">
-        <ModalHeader toggle={closeform}></ModalHeader>
+      <Modal isOpen={modelClose} size="lg">
+        <ModalHeader toggle={closeForm}></ModalHeader>
         <ModalBody>
           <Form onSubmit={submitHandler}>
             <FormGroup>
@@ -61,4 +61,4 @@ const Additem = ({ items, buttonClick }) => {
   );
 };
 
-export default Additem;
+export default AddItem;
