@@ -23,7 +23,7 @@ const Update = ({ items, setItems, updateHandler, editItem }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const finalData = items.map((item, index) => {
+    const finalData = items.map((item) => {
       if (item.product_name === editItem.product_name) {
         const updatedValue = { ...item, ...updateItem };
         return updatedValue;
