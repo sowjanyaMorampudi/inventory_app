@@ -51,7 +51,6 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
               <Label for="productName">product_name</Label>
               <Input
                 type="text"
-                placeholder="product_name"
                 name="product_name"
                 value={updateitem.product_name}
                 onChange={changeHandler}
@@ -62,7 +61,6 @@ const Update = ({ items, setItems, updatehandler, editItem }) => {
               <Label for="quantity">quantity</Label>
               <Input
                 type="text"
-                placeholder="quantity"
                 name="quantity"
                 onChange={changeHandler}
                 value={updateitem.quantity}
