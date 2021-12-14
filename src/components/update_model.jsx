@@ -10,7 +10,7 @@ import {
   Button,
 } from "reactstrap";
 
-const Update = ({ items, setItems, updateHandler, editItem }) => {
+const Update = ({ items, setItems, updateHandler, editItem, editIndex }) => {
   const [updateItem, setUpdateItem] = useState({
     product_name: editItem.product_name,
     quantity: editItem.quantity,
@@ -23,8 +23,8 @@ const Update = ({ items, setItems, updateHandler, editItem }) => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    const finalData = items.map((item) => {
-      if (item.product_name === editItem.product_name) {
+    const finalData = items.map((item, index) => {
+      if (index === editIndex) {
         const updatedValue = { ...item, ...updateItem };
         return updatedValue;
       } else {

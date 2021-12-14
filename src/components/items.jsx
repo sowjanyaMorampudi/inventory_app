@@ -4,9 +4,11 @@ import Update from "./update_model";
 const Items = ({ items, setItems, deleteHandler }) => {
   const [newItem, setNewItem] = useState(false);
   const [editItem, setEditItem] = useState();
-  const updateHandler = (item) => {
+  const [editIndex, setEditIndex] = useState();
+  const updateHandler = (item, index) => {
     setNewItem(!newItem);
     setEditItem(item);
+    setEditIndex(index);
   };
   return (
     <CardGroup>
@@ -32,7 +34,7 @@ const Items = ({ items, setItems, deleteHandler }) => {
                     <Button
                       color="primary"
                       onClick={() => {
-                        updateHandler(item);
+                        updateHandler(item, index);
                       }}
                     >
                       update
@@ -43,6 +45,7 @@ const Items = ({ items, setItems, deleteHandler }) => {
                         setItems={setItems}
                         updateHandler={updateHandler}
                         editItem={editItem}
+                        editIndex={editIndex}
                       />
                     )}
                   </CardBody>
